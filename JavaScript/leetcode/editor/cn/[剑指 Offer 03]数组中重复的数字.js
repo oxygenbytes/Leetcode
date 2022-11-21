@@ -1,0 +1,108 @@
+/*
+---
+title: "[剑指 Offer 03]数组中重复的数字"
+date: 2022-11-15 01:42:37+08:00
+draft: true
+tags:
+  - Leetcode
+---
+*/
+
+/**
+找出数组中重复的数字。 
+
+ 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找
+出数组中任意一个重复的数字。 
+
+ 示例 1： 
+
+ 输入：
+[2, 3, 1, 0, 2, 5, 3]
+输出：2 或 3 
+ 
+
+ 
+
+ 限制： 
+
+ 2 <= n <= 100000 
+
+ Related Topics 数组 哈希表 排序 👍 1002 👎 0
+
+*/
+
+//leetcode submit region begin(Prohibit modification and deletion)
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+let findRepeatNumberBruteForce = function (nums) {
+    let set = new Set();
+
+    for (let i = 0; i < nums.length; i++) {
+        if (set.has(nums[i])) {
+            return nums[i];
+        }
+        set.add(nums[i]);
+    }
+    return -1;
+};
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+let findRepeatNumber = function (nums) {
+    nums.sort();
+
+    for (let i = 0;i < nums.length - 1;i++) {
+        if (nums[i] == nums[i+1]) {
+           return nums[i];
+        }
+    }
+    return -1;
+};
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+let findRepeatNumberSort = function (nums) {
+    nums.sort();
+
+    for (let i = 0;i < nums.length - 1;i++) {
+        if (nums[i] == nums[i+1]) {
+            return nums[i];
+        }
+    }
+    return -1;
+};
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+let findRepeatNumber = function (nums) {
+    for (let i = 0;i < nums.length;i++) {
+        while (i != nums[i]) {
+            if (nums[i] == nums[nums[i]]) {
+                return nums[i];
+            }
+            swap(nums, i, nums[i]);
+        }
+    }
+    return -1;
+};
+
+/**
+ * @param {number[]} nums
+ * @param {int} i
+ * @param {int} j
+ */
+const swap = (nums, i, j) => {
+    [nums[i], nums[j]] = [nums[j], nums[i]]
+}
+
+
+//leetcode submit region end(Prohibit modification and deletion)
