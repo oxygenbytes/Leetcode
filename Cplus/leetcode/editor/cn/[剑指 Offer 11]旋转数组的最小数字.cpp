@@ -50,12 +50,12 @@ public:
         while(k > 0 && numbers[k] == numbers[0]) k--;
         if (numbers[k] >= numbers[0]) return numbers[0];
 
-        // https://oxygenbytes.github.io/posts/algorithms/%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/
+        // https://oxygenbytes.github.io/posts/algorithms/binarysearch
         int left = 0, right = k;
         while(left < right) {
             int mid = (left + right) >> 1;
             if (numbers[mid] < numbers[0])  right = mid;
-            else left = mid + 1;
+            else left = mid + 1; // lv or vr
         }
         return numbers[right];
     }
