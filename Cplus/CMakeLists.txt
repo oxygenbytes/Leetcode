@@ -3,4 +3,4 @@ project(Cplus)
 
 set(CMAKE_CXX_STANDARD 14)
 
-file (GLOB files leetcode/editor/en/*.cpp)
+file(GLOB FILES leetcode/editor/en/*.cpp)
