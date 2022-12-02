@@ -42,15 +42,15 @@ public:
             case 3: return 2;
         }
         int numOf3 = n / 3, numOf2 = 0;
-        if (n % 3 == 1) numOf2 += 2, numOf3 --;
-        if (n % 3 == 2) numOf2 ++;
-        return (long long)qmi(2, numOf2) * qmi(3, numOf3) % mod;
+        if (n % 3 == 1) numOf2 += 2, numOf3--;
+        if (n % 3 == 2) numOf2++;
+        return (long long) qmi(2, numOf2) * qmi(3, numOf3) % mod;
     }
 
     // https://raw.githubusercontent.com/blue-milk/blue-milk.github.io/master/assets/img1.png
     int qmi(int a, int b) {
         int result = 1;
-        while(b) {
+        while (b) {
             if (b & 1) result = (long long) result * a % mod;
             a = (long long) a * a % mod;
             b >>= 1;
