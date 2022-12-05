@@ -13,6 +13,14 @@
 //
 // Related Topics 链表 双指针 👍 417 👎 0
 
+#include <iostream>
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x): val(x), next(nullptr) {}
+};
+using namespace std;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -26,7 +34,26 @@
 class Solution {
 public:
     ListNode* getKthFromEnd(ListNode* head, int k) {
+        if (!head) return nullptr;
+        ListNode *pre = head, *cur = head;
 
+        while(k--) {
+            if (pre) pre = pre->next;
+            else return nullptr;
+        }
+
+        // 1 -> 2 -> 3 -> 4 -> 5 -> nullptr  and k == 3
+        //          slow            fast
+        // fast stay at nullptr finally
+        while (pre) {
+            pre = pre->next;
+            cur = cur->next;
+        }
+
+        // while(pre) ==> stay at nullptr
+        // while(pre->next) ==> stay at last non-nullptr
+
+        return cur;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
