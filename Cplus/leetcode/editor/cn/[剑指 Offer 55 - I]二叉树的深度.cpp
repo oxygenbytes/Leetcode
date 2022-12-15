@@ -26,6 +26,8 @@
 // Related Topics 树 深度优先搜索 广度优先搜索 二叉树 👍 220 👎 0
 
 #include <algorithm>
+#include <queue>
+#include <stack>
 using namespace std;
 
 struct TreeNode {
@@ -44,13 +46,56 @@ struct TreeNode {
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class SolutionRecursion {
 public:
     int maxDepth(TreeNode* root) {
         if (!root) return 0;
         if (!root->left && !root->right) return 1;
 
         return max(maxDepth(root->left), maxDepth(root->right))+ 1;
+    }
+};
+
+
+class SolutionBFS {
+public:
+    int maxDepth(TreeNode* root) {
+        if (!root) return 0;
+        queue<TreeNode*> q({root});
+
+        int depth = 0;
+
+        while(!q.empty()) {
+            for (int i = q.size() - 1;i >= 0;i--) {
+                auto temp = q.front();q.pop();
+                if (temp->left) q.push(temp->left);
+                if (temp->right) q.push(temp->right);
+            }
+            depth ++;
+        }
+        return depth;
+    }
+};
+
+
+class Solution {
+public:
+    int maxDepthDFS(TreeNode* root) {
+        if (!root) return 0;
+
+        int depth = 0;
+        stack<TreeNode*> stk({root});
+        TreeNode dummy(-1);
+        TreeNode *last = &dummy;
+        while(!stk.empty()) { // post order
+            depth = max(depth, int(stk.size()));
+            TreeNode* cur = stk.top();
+            if (cur->left && cur->left != last && cur->right != last) stk.push(cur->left);
+            else if (cur->right && cur->right != last) stk.push(cur->right);
+            else stk.pop(), last = cur;
+        }
+
+        return depth;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
