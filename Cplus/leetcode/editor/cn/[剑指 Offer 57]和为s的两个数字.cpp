@@ -29,18 +29,42 @@
 using namespace std;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SolutionTwoPointers {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> ans;
-
         for (int i = 0, j = nums.size() - 1;i <= j;) {
             if (nums[i] + nums[j] == target) return {nums[i], nums[j]};
             else if (nums[i] + nums[j] < target) i++;
             else j--;
         }
 
-        return ans;
+        return {};
     }
 };
+
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for (int i = 0;i < nums.size();i++) {
+            if (nums[i] > target) return {};
+
+            if (bs(nums, target - nums[i])) return {nums[i], target - nums[i]};
+        }
+        return {};
+    }
+
+    bool bs(vector<int>& nums, int target) {
+        int left = 0, right = nums.size() - 1;
+
+        while(left < right) {
+            int mid = (left + right) >> 1;
+            if (nums[mid] >= target) right = mid;
+            else left = mid + 1;
+        }
+
+        return nums[left] == target;
+    }
+};
+
 //leetcode submit region end(Prohibit modification and deletion)
