@@ -43,6 +43,7 @@ public:
 
         int left = 0, right = nums.size() - 1;
 
+        // https://pic.leetcode-cn.com/1611730934-iKurnj-640.png
         while(left < right) {
             int mid = left + right >> 1;
             if (target <= nums[mid]) right = mid;
