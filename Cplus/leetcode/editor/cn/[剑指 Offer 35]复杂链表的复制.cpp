@@ -91,7 +91,7 @@ public:
 
 
         // a -> b -> c
-        // a -> a(copy) -> b -> b(copy) -> c(copy)
+        // a -> a(copy) -> b -> b(copy) -> c -> c(copy)
         while (p) {
             q = p->next;
             p->next = new Node(p->val);

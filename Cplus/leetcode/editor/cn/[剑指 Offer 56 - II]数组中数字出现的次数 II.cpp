@@ -44,7 +44,7 @@ public:
             else ans <<= 1;
         }
 
-        return ans;
+        return ans; 
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
