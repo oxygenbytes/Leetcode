@@ -50,7 +50,6 @@ public:
     int lengthOfLongestSubstring(string s) {
         int n = s.size();
 
-
         unordered_map<char, int> mp;
         int res = 0;
         for (int i = 0, j = 0; j < n; j++) {
