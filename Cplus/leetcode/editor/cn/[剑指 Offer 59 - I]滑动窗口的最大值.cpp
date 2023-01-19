@@ -36,6 +36,7 @@ using namespace std;
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        // https://www.acwing.com/video/202/
         vector<int> res;
         deque<int> q; // keep index, nums[index] is increasing
 
