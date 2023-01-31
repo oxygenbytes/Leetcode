@@ -74,7 +74,8 @@ public:
         if (!l1 || !l2) return l1 ? l1 : l2;
 
         ListNode dummy(-1);
-        auto cur = &dummy, carry = 0;
+        auto cur = &dummy;
+        int carry = 0;
 
         while (l1 || l2 || carry) {
             int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
