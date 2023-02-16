@@ -73,7 +73,7 @@ let findRepeatNumberSort = function (nums) {
  * @param {number[]} nums
  * @return {number}
  */
-let findRepeatNumber = function (nums) {
+let findRepeatNumberSwap = function (nums) {
     for (let i = 0;i < nums.length;i++) {
         while (i != nums[i]) {
             if (nums[i] == nums[nums[i]]) {
