@@ -69,6 +69,7 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         if (!root) return {};
+        
         vector<int> ans;
         stack<TreeNode*> stk;
 
