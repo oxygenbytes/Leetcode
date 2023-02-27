@@ -83,7 +83,7 @@ class Solution {
 private:
     Node *pre, *head;
 public:
-    // https://pic.leetcode-cn.com/1599401091-PKIjds-Picture1.png
+    // https://pic.leetcode.cn/1599401091-PKIjds-Picture1.png
     Node *treeToDoublyList(Node *root) {
         if (!root) return nullptr;
         dfs(root);
